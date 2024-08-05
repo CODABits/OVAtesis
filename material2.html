@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/salas/material2.css">
+    <link rel="shortcut icon"  href="assets/img/favicon-256x256.png">   
+    <title>Materiales#2</title>
+</head>
+<body>
+    <br><br>
+    <div class="logo-container1">
+        <img src="assets/img/ova-psicologia-2025.png" alt="Logo 2">
+    </div>
+    <br><br> <br><br> <br><br>
+    
+   
+    
+    <!-- Círculos con funcionalidad de moverse -->
+    <div class="small-circles-container">
+        <div class="small-circle move">E</div>
+        <div class="small-circle move">m</div>
+        <div class="small-circle move">p</div>
+        <div class="small-circle move">a</div>
+        <div class="small-circle move">t</div>
+        <div class="small-circle move">i</div>
+        <div class="small-circle move">z</div>
+        <div class="small-circle move">a</div>
+        <div class="small-circle move">r</div>
+    </div>
+    <h4 style="font-family: Segoe Script; color:#56c0d1" ><q>Párate sobre las letras para moverlas</q></h4>
+    <div class="logo-container">
+        <img src="assets/img/psicologia-umanizales.jpeg" alt="Logo 2">
+    </div>
+    
+    <h4>Entra en los círculos para ver la información</h4>
+
+    <!-- Círculos con ventanas emergentes -->
+    <div class="small-circles-container">
+        <div class="small-circle" data-modal="modal1"></div>
+        <div class="small-circle" data-modal="modal2"></div>
+        <div class="small-circle" data-modal="modal3"></div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <img src="ruta_imagen1.png" alt="Imagen 1" class="modal-image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor urna id neque rhoncus, non fermentum nisi aliquam.</p>
+            <button class="close-button" onclick="closeModal('modal1')">🔒 Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <img src="ruta_imagen2.png" alt="Imagen 2" class="modal-image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor urna id neque rhoncus, non fermentum nisi aliquam.</p>
+            <button class="close-button" onclick="closeModal('modal2')">🔒 Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <img src="ruta_imagen3.png" alt="Imagen 3" class="modal-image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor urna id neque rhoncus, non fermentum nisi aliquam.</p>
+            <button class="close-button" onclick="closeModal('modal3')">🔒 Cerrar</button>
+        </div>
+    </div>
+<br><br><br>
+
+ <!-- Botones OVA y Reto 1 -->
+<a href="index.html" class="button-ova">OVA</a>
+<a href="salasaman.html" class="button-reto">Reto 1</a>
+
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+        document.querySelectorAll('.small-circle.move').forEach(circle => {
+            circle.addEventListener('mouseover', () => {
+                circle.style.animation = 'moveAndRotate 1s infinite';
+            });
+            circle.addEventListener('mouseout', () => {
+                circle.style.animation = '';
+            });
+        });
+
+        document.querySelectorAll('.small-circle[data-modal]').forEach(circle => {
+            circle.addEventListener('click', (event) => {
+                const modalId = event.currentTarget.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
+    </script>
+</body>
+</html>
